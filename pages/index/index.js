@@ -1,9 +1,9 @@
-var a = getApp();
+﻿var a = getApp();
 
 Page({
   data: {
     isStart: false,
-    showRank: true,
+    showRank: 0,
     userInfo: {},
     //存储计时器
     setInter: '',
@@ -83,6 +83,11 @@ Page({
         icon: 'none'
       })
     }
+    var that = this
+    wx.setStorage({
+      key: "password",
+      data: that.data.password
+    })
   },
   changeUserName: function (e) {
     this.data.userName = e.detail.value;
@@ -173,6 +178,7 @@ Page({
               })
             },
             fail(err) {
+              console.log(err);
               wx.showToast({
                 icon: 'none',
                 title: '删除失败',
@@ -298,6 +304,20 @@ Page({
       showRankType: 0,
       isLogin: true,
       isAdmin: false
+    })
+    var that = this
+    //读取储存密码
+    wx.getStorage({
+      key: 'password',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          password: res.data
+        })
+      },
+      fail: function () {
+        console.log("getStorageFail")
+      }
     })
   },
   onShareAppMessage: function () {

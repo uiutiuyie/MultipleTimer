@@ -1,4 +1,4 @@
-﻿var a = getApp();
+var a = getApp();
 
 Page({
   data: {

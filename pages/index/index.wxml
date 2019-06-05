@@ -40,5 +40,5 @@
 </view>
 
 <modal title="请输入密码" wx:if="{{isLogin}}" confirm-text="确定" bindconfirm="login" cancel-text="不能取消~">
-  <input placeholder="在此输入密码" type="password" bindinput="changeLoginPassword" />
+  <input placeholder="在此输入密码" type="password" bindinput="changeLoginPassword" value='{{password}}' />
 </modal>
